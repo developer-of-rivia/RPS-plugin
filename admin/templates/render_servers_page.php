@@ -23,13 +23,18 @@ $result = $wpdb->get_results("SELECT * FROM newp.rpsgame_rooms;");
     <?php
         foreach($result as $row):
             ?>
-            <tr>
-                <th scope="row"><?= $row->room_id ?></th>
-                <td><?= $row->room_name ?></td>
-                <td><?= $row->room_status ?></td>
-                <td><?= $row->room_places ?></td>
-                <td><a href="#">Присоединиться</a></td>
-            </tr>
+            <form action="" method="POST">
+              <tr>
+                  <input hidden name="is-join" value="1">
+                  <input hidden name="room_id" value="<?= $row->room_id ?>">
+
+                  <th scope="row"><?= $row->room_id ?></th>
+                  <td><?= $row->room_name ?></td>
+                  <td><?= $row->room_status ?></td>
+                  <td><?= $row->room_places ?>/2</td>
+                  <td><button>Присоединиться</button></td>
+              </tr>
+            </form>
             <?php
         endforeach;
     ?>

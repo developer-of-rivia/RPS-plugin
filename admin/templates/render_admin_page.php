@@ -9,6 +9,7 @@
             <label for="exampleInputEmail1">Название комнаты</label>
             <input name="room_name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Название">
           </div>
+          <input hidden name="is_admin_page" value="1">
           <button type="submit" class="btn btn-primary">Создать</button>
         </form>
     </div>

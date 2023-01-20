@@ -10,5 +10,6 @@ Class rpsgame_admin {
         require_once RPSGAME_PLUGIN_DIR . '/admin/includes/class-admin-page.php';
         require_once RPSGAME_PLUGIN_DIR . '/admin/includes/class-create-server.php';
         require_once RPSGAME_PLUGIN_DIR . '/admin/includes/class-room.php';
+        require_once RPSGAME_PLUGIN_DIR . '/admin/includes/class-room-enter.php';
     }
 }

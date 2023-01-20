@@ -19,8 +19,9 @@ Class Create_Server {
     }
 }
 
-if($_SERVER['REQUEST_METHOD'] === 'POST' && is_admin() === true && current_user_can( 'administrator' )){
+if($_SERVER['REQUEST_METHOD'] === 'POST' && is_admin() === true && current_user_can('administrator') && $_POST['is_admin_page'] == 1){
     $create_server = new Create_Server();
+    $_POST['is_admin_page'] = null;
 }
 
 
