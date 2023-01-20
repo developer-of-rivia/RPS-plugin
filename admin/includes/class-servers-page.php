@@ -8,12 +8,12 @@ Class Server_Page {
 
     public function add_server_page(){
         add_menu_page(
-            'RPS',
-            'RPS',
+            'RPS Servers',
+            'RPS Servers',
             'manage_options',
             'servers',
             'render_servers_page',
-            'dashicons-games',
+            'dashicons-editor-ul',
             '999',
         );
 

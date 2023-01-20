@@ -8,33 +8,19 @@ $result = $wpdb->get_results("SELECT * FROM newp.rpsgame_rooms;");
 
 ?>
 
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Status</th>
-      <th scope="col">Places</th>
-      <th scope="col">Enter</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php
-        foreach($result as $row):
-            ?>
-            <tr>
-                <th scope="row"><?= $row->room_id ?></th>
-                <td><?= $row->room_name ?></td>
-                <td><?= $row->room_status ?></td>
-                <td><?= $row->room_places ?></td>
-                <td><a href="#">Присоединиться</a></td>
-            </tr>
-            <?php
-        endforeach;
-    ?>
-  </tbody>
-</table>
+<section style="padding: 100px;">
+    <div class="container">
+        <form>
+        <h1 class="mb-5">Сделайте ваш выбор</h1>
+          <div class="row">
+            <div class="col">
+              <input type="text" class="form-control mb-3" placeholder="Ваш выбор">
+              <button class="btn btn-success">Сделать выбор</button>
+            </div>
+          </div>
+        </form>
+    </div>
+</section>
 
 
 
