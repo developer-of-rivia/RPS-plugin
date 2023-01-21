@@ -26,10 +26,12 @@ Class Room_Enter extends Init_Player{
         if($room_places == 0 && $this->is_joined == 0){
             $wpdb->query("UPDATE `newp`.`rpsgame_rooms` SET `room_places` = '1' WHERE (`room_id` = '$this->room_id');");
             $wpdb->query($wpdb->prepare("UPDATE `newp`.`rpsgame_gamers` SET `is_joined` = '1' WHERE (`id` = '%d');", $this->player_id));
+            $wpdb->query($wpdb->prepare("UPDATE `newp`.`rpsgame_gamers` SET `joined_to` = '$this->room_id' WHERE (`id` = '%d');", $this->player_id));
         }
         elseif($room_places == 1 && $this->is_joined == 0){
             $wpdb->query("UPDATE `newp`.`rpsgame_rooms` SET `room_places` = '2' WHERE (`room_id` = '$this->room_id');");
             $wpdb->query($wpdb->prepare("UPDATE `newp`.`rpsgame_gamers` SET `is_joined` = '1' WHERE (`id` = '%d');", $this->player_id));
+            $wpdb->query($wpdb->prepare("UPDATE `newp`.`rpsgame_gamers` SET `joined_to` = '$this->room_id' WHERE (`id` = '%d');", $this->player_id));
         }
     }
 }
@@ -37,7 +39,5 @@ Class Room_Enter extends Init_Player{
 if($_POST['is-join'] == 1){
     $room_enter = new Room_Enter();
 }
-
-
 
 ?>

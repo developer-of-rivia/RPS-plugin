@@ -2,14 +2,46 @@
 
 
 <?php
+  global $wpdb;
+  $result = $wpdb->get_results("SELECT * FROM newp.rpsgame_rooms;");
 
-global $wpdb;
-$result = $wpdb->get_results("SELECT * FROM newp.rpsgame_rooms;");
+  function get_this_player(){
+    $user = get_userdata(1);
+    $user_ID;
+    $user_login = $user->user_login;
+    $user_is_joined;
+    $join_to;
 
+    global $wpdb;
+    $results = $wpdb->get_results("SELECT * FROM newp.rpsgame_gamers WHERE login='$user_login'");
+
+    foreach ($results as $item){
+        $user_ID = $item->id;
+        $user_is_joined = $item->is_joined;
+        $join_to = $item->joined_to;
+    }
+
+    return $join_to;
+}
+  get_this_player();
+
+  $hello_text;
 ?>
 
 
+
+
 <table class="table">
+  <h2>
+    <?php
+      if(get_this_player()){
+        $hello_text = 'Вы присоединились к комнате: ID_' . get_this_player();
+      } else {
+        $hello_text = 'Выберите комнату для игры';
+      }
+    ?>
+    <?php echo $hello_text; ?>
+  </h2>
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -32,7 +64,7 @@ $result = $wpdb->get_results("SELECT * FROM newp.rpsgame_rooms;");
                   <td><?= $row->room_name ?></td>
                   <td><?= $row->room_status ?></td>
                   <td><?= $row->room_places ?>/2</td>
-                  <td><button>Присоединиться</button></td>
+                  <td><button <?php if(get_this_player() == true){echo 'disabled';}?>>Присоединиться</button></td>
               </tr>
             </form>
             <?php

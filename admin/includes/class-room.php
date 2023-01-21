@@ -1,6 +1,6 @@
 <?php
 
-Class Room_Page {
+Class Room_Page extends Init_Player{
     
     public function __construct(){
         add_action('admin_menu', [$this, 'add_room_page']);

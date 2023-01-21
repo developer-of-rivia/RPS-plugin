@@ -1,14 +1,29 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<?php
-global $wpdb;
-$result = $wpdb->get_results("SELECT * FROM newp.rpsgame_rooms;");
-?>
-
 
 <?php
 
-  if($_SESSION['im_joined'] == 1){
+    function get_this_player(){
+        $user = get_userdata(1);
+        $user_ID;
+        $user_login = $user->user_login;
+        $user_is_joined;
+
+        global $wpdb;
+        $results = $wpdb->get_results("SELECT * FROM newp.rpsgame_gamers WHERE login='$user_login'");
+
+        foreach ($results as $item){
+            $user_ID = $item->id;
+            $user_is_joined = $item->is_joined;
+        }
+
+        return $user_is_joined;
+    }
+    get_this_player();
+
+
+
+  if(get_this_player() == 1){
     ?>
       <section style="padding: 100px;">
         <div class="container">
