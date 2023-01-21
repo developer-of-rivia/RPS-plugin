@@ -13,6 +13,8 @@ Class rpsgame{
 
         require_once ABSPATH . WPINC . '/pluggable.php';
         require_once ABSPATH . WPINC . '/pluggable-deprecated.php';
+        
+        require_once( $_SERVER['DOCUMENT_ROOT'] . '/wp-load.php' );
     }
 
     public function define_admin_hooks(){

@@ -18,6 +18,8 @@ class rpsgame_activate {
         $query = "INSERT INTO `rpsgame_gamers` (`id`, `login`) VALUES (NULL, '$userlogin')";
         $wpdb->query($query);
     }
+
+
 }
 
 

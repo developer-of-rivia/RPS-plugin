@@ -1,26 +1,32 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+<?php
+global $wpdb;
+$result = $wpdb->get_results("SELECT * FROM newp.rpsgame_rooms;");
+?>
+
 
 <?php
 
-global $wpdb;
-$result = $wpdb->get_results("SELECT * FROM newp.rpsgame_rooms;");
-
+  if($_SESSION['im_joined'] == 1){
+    ?>
+      <section style="padding: 100px;">
+        <div class="container">
+            <form>
+            <h1 class="mb-5">Сделайте ваш выбор</h1>
+              <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control mb-3" placeholder="Ваш выбор">
+                  <button class="btn btn-success">Сделать выбор</button>
+                </div>
+              </div>
+            </form>
+        </div>
+    </section>
+  <?php } else {
+    echo 'Войдите в комнату';
+  }
 ?>
-
-<section style="padding: 100px;">
-    <div class="container">
-        <form>
-        <h1 class="mb-5">Сделайте ваш выбор</h1>
-          <div class="row">
-            <div class="col">
-              <input type="text" class="form-control mb-3" placeholder="Ваш выбор">
-              <button class="btn btn-success">Сделать выбор</button>
-            </div>
-          </div>
-        </form>
-    </div>
-</section>
 
 
 
